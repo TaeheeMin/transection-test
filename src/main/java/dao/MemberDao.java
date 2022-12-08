@@ -33,9 +33,9 @@ public class MemberDao {
 			
 		} finally {
 			try {
-				rs.close();
-				stmt.close();
-				conn.close();
+				if(rs != null) { rs.close(); }
+				if(stmt != null) { stmt.close(); }
+				if(conn != null) { conn.close(); }
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -65,8 +65,8 @@ public class MemberDao {
 			
 		} finally {
 			try {
-				stmt.close();
-				conn.close();
+				if(stmt  != null) { stmt.close(); }
+				if(conn != null) { conn.close(); }
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -104,9 +104,9 @@ public class MemberDao {
 			
 		} finally {
 			try {
-				rs.close();
-				stmt.close();
-				conn.close();
+				if(rs != null) { rs.close(); }
+				if(stmt != null) { stmt.close(); }
+				if(conn != null) { conn.close(); }
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -156,9 +156,9 @@ public class MemberDao {
 			
 		} finally {
 			try {
-				outIdStmt.close();
-				memberStmt.close();
-				conn.close();
+				if(outIdStmt != null) { outIdStmt.close(); }
+				if(memberStmt != null) { memberStmt.close(); }
+				if(conn != null) { conn.close(); }
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
