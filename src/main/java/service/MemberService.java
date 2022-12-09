@@ -105,8 +105,10 @@ public class MemberService {
 			
 			if(this.outIdDao.insertMemberId(conn, memberId) == 1) {
 				this.memberDao = new MemberDao();
-				this.memberDao.deleteMember(conn, memberId);
-				// 실패시 예외발생시 catch로 이동해 롤백됨
+				if(this.memberDao.deleteMember(conn, memberId) != 1) {
+					throw new Exception();
+				}
+				// 실패시 예외발생 catch로 이동해 롤백됨
 			}
 			conn.commit(); // 커밋
 			
