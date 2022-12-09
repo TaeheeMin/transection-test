@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="dao.*" %>
+<%@ page import="service.*" %>
 <%@ page import="vo.*" %>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -24,8 +25,8 @@
 	
 	// model 호출
 	// 1-1 아이디 확인
-	MemberDao memberDao = new MemberDao();
-	boolean resultCheck = memberDao.checkMemberId(memberId);
+	MemberService memberService = new MemberService();
+	boolean resultCheck = memberService.checkMemberId(memberId);
 	// t -> 가입가능
 	if(resultCheck == false){
 		response.sendRedirect(request.getContextPath()+"/insertMember.jsp");
@@ -36,7 +37,7 @@
 	member.setMemberId(memberId);
 	member.setMemberPw(memberPw);	
 	member.setMemberName(memberName);
-	int insertRow = memberDao.insertMember(member);
+	int insertRow = memberService.insertMember(member);
 	
 	String redirectUrl = "/insertMember.jsp";
 	if(insertRow == 1){

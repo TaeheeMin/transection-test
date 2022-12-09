@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.*" %>
-<%@ page import="dao.*" %>
+<%@ page import="service.*" %>
 <%
 	request.setCharacterEncoding("utf-8");
 	//1. 유효성 검사
@@ -23,11 +23,8 @@
 	paramMember.setMemberPw(request.getParameter("memberPw"));
 	
 	// model 호출
-	MemberDao memberDao = new MemberDao();
-	Member resultMember = memberDao.login(paramMember);
-	
-	// MemberDao memberDao = new MemberDao().memberDao.login(paramMember);
-	// 이렇게도 사용 가능하나 한번밖에 사용 못함
+	MemberService memberService = new MemberService();
+	Member resultMember = memberService.login(paramMember);
 	
 	String redirectUrl = "/login.jsp";
 	if(resultMember != null) { // 로그인 결과있음
